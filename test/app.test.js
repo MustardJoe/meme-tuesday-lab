@@ -52,7 +52,7 @@ describe('meme routing and middleware', () => {
   });
 
   it('gets a specific meme by index number (of the array)', async() => {
-    const meme = await Meme.create({ image: 'rap bone url', bottom: 'oh shit' });
+    const meme = await Meme.create({ image: 'rap bone url', bottom: 'oh shoot' });
 
     return request(app)
       .get(`/api/v1/memes/${meme._id}`)
@@ -63,6 +63,16 @@ describe('meme routing and middleware', () => {
           bottom: 'oh shoot',
           __v: 0
         });
+      });
+  });
+
+  it('deletes a meme by index numb', async() => {
+    const meme = await Meme.create({ image: 'squid', bottom:'bail out the boat' });
+
+    return request(app)
+      .delete(`/api/v1/memes/${meme._id}`)
+      .then(res => {
+        expect(res.body.image).toEqual('squid');
       });
   });
 });
