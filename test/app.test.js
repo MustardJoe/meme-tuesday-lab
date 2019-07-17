@@ -50,4 +50,19 @@ describe('meme routing and middleware', () => {
         expect(res.body).toEqual([memeJSON]);
       });
   });
+
+  it('gets a specific meme by index number (of the array)', async() => {
+    const meme = await Meme.create({ image: 'rap bone url', bottom: 'oh shit' });
+
+    return request(app)
+      .get(`/api/v1/memes/${meme._id}`)
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          image: 'rap bone url',
+          bottom: 'oh shoot',
+          __v: 0
+        });
+      });
+  });
 });
