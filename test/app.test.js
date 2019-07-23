@@ -41,7 +41,7 @@ describe('meme routing and middleware', () => {
   });
 
   it('gets (an array of?) all the memes', async() => {
-    const meme = await Meme.create({ image: 'rap bone url', bottom: 'oh shit' });
+    const meme = await Meme.create({ image: 'rap bone url', bottom: 'oh shucks' });
 
     return request(app)
       .get('/api/v1/memes')
