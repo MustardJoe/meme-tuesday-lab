@@ -24,14 +24,14 @@ describe('meme routing and middleware', () => {
       .post('/api/v1/memes')
       .send({ 
         top: 'yummy',
-        image: 'https://prods3.imgix.net/images/articles/2017_04/Feature-restaurant-butcher-bakery-shops2.jpg?auto=format%2Ccompress&ixjsv=2.2.3',
+        image: 'picture of sandwich',
         bottom: 'Sandwich life'
       })
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
           top: 'yummy',
-          image:'https://prods3.imgix.net/images/articles/2017_04/Feature-restaurant-butcher-bakery-shops2.jpg?auto=format%2Ccompress&ixjsv=2.2.3',
+          image:'picture of sandwich',
           bottom: 'Sandwich life',
           __v: 0
           
