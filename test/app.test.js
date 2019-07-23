@@ -23,14 +23,14 @@ describe('meme routing and middleware', () => {
     return request(app)
       .post('/api/v1/memes')
       .send({ 
-        top: 'shit, I would eat that',
+        top: 'yummy',
         image: 'https://prods3.imgix.net/images/articles/2017_04/Feature-restaurant-butcher-bakery-shops2.jpg?auto=format%2Ccompress&ixjsv=2.2.3',
         bottom: 'Sandwich life'
       })
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          top: 'shit, I would eat that',
+          top: 'yummy',
           image:'https://prods3.imgix.net/images/articles/2017_04/Feature-restaurant-butcher-bakery-shops2.jpg?auto=format%2Ccompress&ixjsv=2.2.3',
           bottom: 'Sandwich life',
           __v: 0
