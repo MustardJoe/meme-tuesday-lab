@@ -40,66 +40,66 @@ describe('meme routing and middleware', () => {
 
   });
 
-  it('gets (an array of?) all the memes', async() => {
-    const meme = await Meme.create({ image: 'rap bone url', bottom: 'oh shucks' });
+  // it('gets (an array of?) all the memes', async() => {
+  //   const meme = await Meme.create({ image: 'rap bone url', bottom: 'oh shucks' });
 
-    return request(app)
-      .get('/api/v1/memes')
-      .then(res => {
-        const memeJSON = JSON.parse(JSON.stringify(meme));
-        expect(res.body).toEqual([memeJSON]);
-      });
-  });
+  //   return request(app)
+  //     .get('/api/v1/memes')
+  //     .then(res => {
+  //       const memeJSON = JSON.parse(JSON.stringify(meme));
+  //       expect(res.body).toEqual([memeJSON]);
+  //     });
+  // });
 
-  it('gets a specific meme by index number (of the array)', async() => {
-    const meme = await Meme.create({ image: 'rap bone url', bottom: 'oh shucks' });
+  // it('gets a specific meme by index number (of the array)', async() => {
+  //   const meme = await Meme.create({ image: 'rap bone url', bottom: 'oh shucks' });
 
-    return request(app)
-      .get(`/api/v1/memes/${meme._id}`)
-      .then(res => {
-        expect(res.body).toEqual({
-          _id: expect.any(String),
-          image: 'rap bone url',
-          bottom: 'oh shucks',
-          __v: 0
-        });
-      });
-  });
+  //   return request(app)
+  //     .get(`/api/v1/memes/${meme._id}`)
+  //     .then(res => {
+  //       expect(res.body).toEqual({
+  //         _id: expect.any(String),
+  //         image: 'rap bone url',
+  //         bottom: 'oh shucks',
+  //         __v: 0
+  //       });
+  //     });
+  // });
 
-  it('can PUT to update a meme', async() => {
-    const meme = await Meme.create({
-      image: 'pic of grumpy cat',
-      bottom: 'my face is stuck this way'
-    });
+  // it('can PUT to update a meme', async() => {
+  //   const meme = await Meme.create({
+  //     image: 'pic of grumpy cat',
+  //     bottom: 'my face is stuck this way'
+  //   });
 
-    return request(app)
-      .put(`/api/v1/memes/${meme._id}`)
-      .send({
-        bottom: 'give me food',
-      })
-      .then(res => {
-        expect(res.body).toEqual({
-          _id: expect.any(String),
-          image: 'pic of grumpy cat',
-          bottom: 'give me food',
-          __v: 0,
-        });
-      });
-  });
+  //   return request(app)
+  //     .put(`/api/v1/memes/${meme._id}`)
+  //     .send({
+  //       bottom: 'give me food',
+  //     })
+  //     .then(res => {
+  //       expect(res.body).toEqual({
+  //         _id: expect.any(String),
+  //         image: 'pic of grumpy cat',
+  //         bottom: 'give me food',
+  //         __v: 0,
+  //       });
+  //     });
+  // });
 
-  it('deletes a meme by index numb', async() => {
-    const meme = await Meme.create({ image: 'squid', bottom:'bail out the boat' });
-    console.log(meme);
+  // it('deletes a meme by index numb', async() => {
+  //   const meme = await Meme.create({ image: 'squid', bottom:'bail out the boat' });
+  //   console.log(meme);
 
-    return request(app)
-      .delete(`/api/v1/memes/${meme._id}`)
-      .then(res => {
-        expect(res.body).toEqual({
-          _id: expect.any(String),
-          image: meme.image,
-          bottom: meme.bottom,
-          __v: 0
-        });
-      });
-  });
+  //   return request(app)
+  //     .delete(`/api/v1/memes/${meme._id}`)
+  //     .then(res => {
+  //       expect(res.body).toEqual({
+  //         _id: expect.any(String),
+  //         image: meme.image,
+  //         bottom: meme.bottom,
+  //         __v: 0
+  //       });
+  //     });
+  // });
 });
